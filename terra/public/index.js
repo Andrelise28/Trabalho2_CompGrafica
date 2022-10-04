@@ -10,8 +10,8 @@ cena = new THREE.Scene();
 
 const fov = 60;
 const aspecto = window.innerWidth / window.innerHeight;
-const proximidade = 0.1;
-const distancia = 1000;
+const proximidade = .1;
+const distancia = 100;
 
 camera = new THREE.PerspectiveCamera(fov, aspecto, proximidade, distancia);
 camera.position.z = 2;
@@ -79,12 +79,15 @@ window.addEventListener('resize', () => {
     render();
 }, false);
 
-terraMesh.rotateZ (0.30);
-nuvemMesh.rotateZ (0.30);
+terraMesh.rotateZ (0.3);
+nuvemMesh.rotateZ (0.3);
+
+terraMesh.position.set(1,0,0);
+nuvemMesh.position.set(1,0,0);
 
 const animate = () => {
     requestAnimationFrame(animate);
-    estrelaMesh.rotateX(0.002)
+    estrelaMesh.rotateY(0.001)
     terraMesh.rotateY (0.0015);
     nuvemMesh.rotateY (0.0025);  
     controls.update();
