@@ -79,12 +79,14 @@ window.addEventListener('resize', () => {
     render();
 }, false);
 
+terraMesh.rotateZ (0.30);
+nuvemMesh.rotateZ (0.30);
 
 const animate = () => {
     requestAnimationFrame(animate);
     estrelaMesh.rotateX(0.002)
-    terraMesh.rotateX (0.0015);
-    nuvemMesh.rotateY (0.001);  
+    terraMesh.rotateY (0.0015);
+    nuvemMesh.rotateY (0.0025);  
     controls.update();
     render();
 };
