@@ -4,6 +4,8 @@ import { OrbitControls } from '/jsm/controls/OrbitControls.js';
 let cena;
 let camera;
 let renderer;
+var clock = new THREE.Clock;
+
 const canvas = document.querySelector('.fundo');
 
 cena = new THREE.Scene();
@@ -82,19 +84,37 @@ window.addEventListener('resize', () => {
 terraMesh.rotateZ (0.3);
 nuvemMesh.rotateZ (0.3);
 
-terraMesh.position.set(1,0,0);
-nuvemMesh.position.set(1,0,0);
-
 const animate = () => {
     requestAnimationFrame(animate);
-    estrelaMesh.rotateY(0.001)
-    terraMesh.rotateY (0.0015);
-    nuvemMesh.rotateY (0.0025);  
-    controls.update();
     render();
 };
 
-const render = () => {
+function render() {
+
+    terraMesh.rotation.y -= 0.02;
+    nuvemMesh.rotation.y += 0.001;
+    estrelaMesh.rotation.y += 0.004;
+
+    let tempo = clock.getElapsedTime();
+    if (tempo > 3.0)
+    {
+        clock = new THREE.Clock;
+        terraMesh.position.set(tempo/3.0, 0, 1);
+        nuvemMesh.position.set(tempo/3.0, 0, 1);
+
+    }
+    else
+    {
+        terraMesh.position.set(tempo/3.0, 0, 1);
+        nuvemMesh.position.set(tempo/3.0, 0, 1);
+
+        terraMesh.scale.x = 0.1+(tempo/5.0);
+    	terraMesh.scale.y = 0.1+(tempo/5.0);
+		terraMesh.scale.z = 0.1+(tempo/5.0);   
+        nuvemMesh.scale.x = 0.1+(tempo/5.0);
+    	nuvemMesh.scale.y = 0.1+(tempo/5.0);
+		nuvemMesh.scale.z = 0.1+(tempo/5.0);  
+    }
     renderer.render(cena, camera);
 }
 
