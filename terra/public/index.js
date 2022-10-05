@@ -57,7 +57,7 @@ cena.add(nuvemMesh);
 const estrelaGeometry = new THREE.SphereGeometry(80, 64, 64);
 
 const estrelaMaterial = new THREE.MeshBasicMaterial({
-    map : THREE.ImageUtils.loadTexture('texture/galaxy.png'),
+    map: THREE.ImageUtils.loadTexture('texture/galaxy.png'),
     side: THREE.BackSide
 });
 
@@ -81,40 +81,60 @@ window.addEventListener('resize', () => {
     render();
 }, false);
 
-terraMesh.rotateZ (0.3);
-nuvemMesh.rotateZ (0.3);
+terraMesh.rotateZ(0.3);
+nuvemMesh.rotateZ(0.3);
 
 const animate = () => {
     requestAnimationFrame(animate);
     render();
 };
 
+let aumenta = 0;
+
+console.log(window.innerWidth, window.innerHeight);
+
 function render() {
 
-    terraMesh.rotation.y -= 0.02;
-    nuvemMesh.rotation.y += 0.001;
-    estrelaMesh.rotation.y += 0.004;
+    terraMesh.rotation.y += 0.001;
+    nuvemMesh.rotation.y += 0.0025;
+    estrelaMesh.rotation.y += 0.001;
 
     let tempo = clock.getElapsedTime();
-    if (tempo > 3.0)
-    {
-        clock = new THREE.Clock;
-        terraMesh.position.set(tempo/3.0, 0, 1);
-        nuvemMesh.position.set(tempo/3.0, 0, 1);
+    if (tempo < 3.0) {
+        terraMesh.position.set(tempo / 6.0, 0, 1);
+        nuvemMesh.position.set(tempo / 6.0, 0, 1);
+ 
+        terraMesh.scale.set(0.1 + (tempo / 5), 
+                            0.1 + (tempo / 5), 
+                            0.1 + (tempo / 5));
 
-    }
-    else
-    {
-        terraMesh.position.set(tempo/3.0, 0, 1);
-        nuvemMesh.position.set(tempo/3.0, 0, 1);
+        nuvemMesh.scale.set(0.1 + (tempo / 5), 
+                            0.1 + (tempo / 5), 
+                            0.1 + (tempo / 5));
+    } else if (tempo > 3) {
+        if (aumenta == 0) {
+            terraMesh.scale.x -= 0.0005;
+            terraMesh.scale.y -= 0.0005;
+            terraMesh.scale.z -= 0.0005;
+            nuvemMesh.scale.x -= 0.0005;
+            nuvemMesh.scale.y -= 0.0005;
+            nuvemMesh.scale.z -= 0.0005;
+            if (terraMesh.scale.x < 0.5) aumenta = 1;
+        }
 
-        terraMesh.scale.x = 0.1+(tempo/5.0);
-    	terraMesh.scale.y = 0.1+(tempo/5.0);
-		terraMesh.scale.z = 0.1+(tempo/5.0);   
-        nuvemMesh.scale.x = 0.1+(tempo/5.0);
-    	nuvemMesh.scale.y = 0.1+(tempo/5.0);
-		nuvemMesh.scale.z = 0.1+(tempo/5.0);  
+        if (aumenta == 1) {
+            terraMesh.scale.x += 0.0005;
+            terraMesh.scale.y += 0.0005;
+            terraMesh.scale.z += 0.0005;
+            nuvemMesh.scale.x += 0.0005;
+            nuvemMesh.scale.y += 0.0005;
+            nuvemMesh.scale.z += 0.0005;
+            if (terraMesh.scale.x > 0.65) aumenta = 0;
+        }
+
+        // console.log(terraMesh.scale.x);
     }
+    // console.log(tempo)
     renderer.render(cena, camera);
 }
 

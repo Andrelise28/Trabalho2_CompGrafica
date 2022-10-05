@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;500;600;700&display=swap');
 
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeOut{
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+
 *{
     margin: 0%;
     padding: 0%;
@@ -39,6 +50,7 @@ body{
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
     font-size: 100pt;
+    animation: fadeOut 2s;
 }
 
 .title p{
