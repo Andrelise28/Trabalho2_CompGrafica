@@ -18,24 +18,7 @@ body{
     height: 100vh;
 }
 
-.nav-menu{
-    display: flex;
-    justify-content: flex-end;
-    padding: 0.5rem 1rem;
-}
 
-.nav-items{
-    padding: 0.5rem 1rem;
-    list-style: none;
-    margin-right: 1rem;
-}
-
-.nav-items a{
-    text-decoration: none;
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 200;
-}
 
 .title-container{
     position: absolute;
@@ -48,13 +31,14 @@ body{
 
 .title{
     color: rgb(231, 231, 231);
-    padding: 0 2rem;
+    padding: 0 8rem;
 }
 
 .title h1{
     text-transform: uppercase;
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
+    font-size: 100pt;
 }
 
 .title p{
@@ -81,10 +65,6 @@ body{
 
 /*** making responsive ****/
 @media only screen and (max-width: 1085px){
-    .nav-menu{
-        padding: 0.5rem;
-    }
-
     .title h1{
         font-size: 1.8rem;
     }    
@@ -93,12 +73,6 @@ body{
         width: 100%;
         font-size: 0.9rem;
         margin: 0.5rem 0;
-    }
-
-    .btn{
-        padding: 0.5rem 1rem;
-        margin-top: 1.7rem;
-        font-size: 0.8rem;
     }
 }
 
@@ -113,14 +87,6 @@ body{
 }
 
 @media only screen and (max-width: 900px){
-    .nav-menu{
-        padding: 0rem;
-    }
-
-    .nav-items{
-        font-size: 0.9rem;
-    }
-
     .title-container{
         width: 60%;
     }
@@ -134,17 +100,7 @@ body{
     }
 }
 
-@media only screen and (max-width: 846px){
-    .nav-items{
-        margin-right: 0.5rem;
-    }
-}
-
 @media only screen and (max-width: 790px){
-    .nav-items{
-        margin-right: 0rem;
-    }
-
     .title-container{
         width: 70%;
         left: 50%;
@@ -158,40 +114,24 @@ body{
 }
 
 @media only screen and (max-width: 700px){
-    .nav-menu{
-        width: 100%;
-    }
-
     .title-container{
         width: 100%;
     }
 }
 
 @media only scree and (max-width: 630px){
-    .nav-menu{
-         width: 100%;
-    }
-
     .title-container{
         width: 100%;
     }
 }
 
 @media only screen and (max-width: 544px){
-    .nav-menu{
-        width: 100%;
-   }
-
    .title-container{
        width: 100%;
    }
 }
 
 @media only screen and (max-width: 472px){
-    .nav-menu{
-        width: 100%;
-   }
-
    .title-container{
        width: 100%;
    }
