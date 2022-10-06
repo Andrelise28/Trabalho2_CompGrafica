@@ -50,7 +50,7 @@ body{
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
     font-size: 100pt;
-    animation: fadeOut 2s;
+    animation: fadeIn 4s;
 }
 
 .title p{
@@ -148,4 +148,3 @@ body{
        width: 100%;
    }
 }
-/*xx** making responsive ***xx*/

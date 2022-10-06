@@ -91,8 +91,6 @@ const animate = () => {
 
 let aumenta = 0;
 
-console.log(window.innerWidth, window.innerHeight);
-
 function render() {
 
     terraMesh.rotation.y += 0.001;
@@ -131,10 +129,7 @@ function render() {
             nuvemMesh.scale.z += 0.0005;
             if (terraMesh.scale.x > 0.65) aumenta = 0;
         }
-
-        // console.log(terraMesh.scale.x);
     }
-    // console.log(tempo)
     renderer.render(cena, camera);
 }
 
